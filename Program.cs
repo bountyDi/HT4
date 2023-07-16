@@ -27,7 +27,47 @@ void Task27()
     }
     Console.WriteLine(sum);
 }
-Task29()
+
+void FillArray(int[] array)
 {
-    
+    int length = array.Length;
+    int index = 0;
+    while(index<length)
+    {
+        array[index]=new Random().Next(-100,100);
+        index++;
+    }
 }
+void PrintArray(int[] array)
+{
+    int count = array.Length;
+    int position = 0;
+    while(position<count)
+    {
+        Console.Write(array[position] + " ");
+        position++;
+    }
+}
+
+void SelectionSort(int [] array)
+{
+    for (int i = 0; i<array.Length - 1; i++)
+    {
+        int minPosition = i;
+        for (int j = i+1; j<array.Length; j++)
+        {
+            if(Math.Abs(array[i]) < Math.Abs(array[j]))
+            {
+                minPosition = j;
+            }
+        }
+
+        int temporary = array[i];
+        array[i] = array[minPosition];
+        array[minPosition] = temporary;
+    }
+}
+int[] array = new int[8];
+FillArray(array);
+SelectionSort(array);
+PrintArray(array);
